@@ -3,7 +3,8 @@ var github = require('github-auth');
 var express = require('express');
 var path = require('path');
 
-var app = root();
+// var app = root();
+var app = express();
 
 
 var gh = github('2a900d9e9871c1b4c27f', '450c8bd04e582370a1de97206268c6aa3e07840b', {
@@ -22,29 +23,24 @@ app.all('*', function(req, res, next) {
 });
 
 
-// app.get('/', function(req, res) {
-//   res.send('<h2>Hello World!</h2>');
-// });
-
-// app.get('/render', function(req, res) {
-//     res.render('login', {title: 'res vs app render'})
-// })
-
-
-// app.use(express.static(path.join(__dirname, 'public')));
-//
-//
-// app.get('/', function(req, res, next){
-//     res.render('./login.html');
-// });
+app.use(express.static(__dirname + '/View'));
+//Store all HTML files in view folder.
+app.use(express.static(__dirname + '/Script'));
+//Store all JS and CSS in Scripts folder.
 
 app.get('/',function(req,res){
-  res.sendFile(path.join(__dirname+'/login.html'));
-  //__dirname : It will resolve to your project folder.
+  res.sendFile('index.html');
+  //It will find and locate index.html from View or Scripts
 });
 
-// app.get('/', function(req, res) {
-//   res.render('login.html');
-// });
+app.get('/about',function(req,res){
+  res.sendFile('/about.html');
+});
+
+app.get('/sitemap',function(req,res){
+  res.sendFile('/sitemap.html');
+});
 
 app.listen(3000);
+
+console.log("Running at Port 3000");
