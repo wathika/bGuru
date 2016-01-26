@@ -1,0 +1,15 @@
+{
+  "name": "render-html-in-express",
+  "version": "1.0.0",
+  "description": "practcing with renderring html in expressjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "expressjs",
+    "html"
+  ],
+  "author": "viscount",
+  "license": "ISC"
+}
